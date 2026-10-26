@@ -32,3 +32,10 @@ Choisit prototype local sur photographie avec sélection manuelle de façade et 
 
 ## Limites
 L'intégralité des discussions anciennes, réponses de l'assistant et heures précises n'est pas accessible via cette conversation; aucun message non vérifié n'est présenté comme verbatim. Pour complétude, intégrer seulement un export authentique après revue d'informations personnelles ou sensibles.
+## 2026-10-26 : nouveau contrat utilisateur, live uniquement (extrait verbatim)
+> la cible est vraiment la vidéo. Impossible de se contenter de la photo pour ce projet, il faut absoluement que ça soit en vidéo en direct sinon le projet ne fait plus de sens.
+> Si on n'est pas sur de la fidélité de l'environnement d'origine, c'est peu grave, c'est qui compte par contre ça va être la cohérence de la persistance dans le temps
+> Appeler quelqu'un en visio, faire une petite blague en disant qu'on est au japon (...) tourner sur soi-même ou se déplacer en marchant, puis couper le filtre pour montrer que c'était un blague
+> dans tous les cas il va falloir à terme répondre à ce cas d'usage, et celui-ci uniquement.
+
+**Assistant (résumé reconstruit non verbatim)** : pivot effectif en POC WebRTC live via Scope + OBS, expérimentation sur mémoire de scène et priorité de la bascule brute. Codé sur PR #8. Aucun résultat GPU réel ou appel vidéo validé; seuls tests de protocole et de commutation automatisés exécutés. La référence exacte de ces instructions se trouve sur `feat/live-webrtc-foundation/docs/CHATGPT_PROJECT_HISTORY.md`.
