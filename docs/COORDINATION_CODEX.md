@@ -17,5 +17,11 @@
 ## Règles d'historique
 Ne jamais prétendre posséder les conversations complètes. L'archive actuelle reprend uniquement le texte accessible et les reconstructions signalées. Sur dépôt public, pas de contexte privé ou personnel.
 
+## Avancement vérifié le 2026-10-26
+- Base de documentation sur develop : commit 89d01352574c5a731162a1e890c290bdc4b4d219.
+- Premier prototype sur branche feat/chatgpt-photo-mvp : https://github.com/goldaj/japan-architecture-ar/pull/1 (brouillon, non fusionnée).
+- Exécution GitHub Actions PR #1 : https://github.com/goldaj/japan-architecture-ar/actions/runs/40347699893 : success pour npm run check et npm test. Les essais navigateur et Lens Studio restent à réaliser.
+- Incubateur : https://github.com/goldaj/projects-incubator/pull/2 prépare le retrait de la fiche d'idée, non fusionné.
+
 ## Point d'arrêt
 Consulter `docs/HANDOFF.md` à la reprise et vérifier les PR et tests CI les plus récents.
