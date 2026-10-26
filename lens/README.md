@@ -5,7 +5,7 @@ Le script `SceneToggle.js` gère une **bascule visuelle uniquement**. Il n'effec
 ## Assemblage manuel dans Lens Studio
 1. Installer une version compatible de Lens Studio depuis https://ar.snap.com/download.
 2. Créer un projet Camera / Snapchat de base; vérifier la version et consigner les résultats dans `docs/HANDOFF.md`.
-3. Importer une image transparente de surcouche graphique **préparée et autorisée**. Dans la scène, ajouter un Screen Image affichant cet asset. Garder sa taille adaptée au ratio.
+3. Utiliser dans le laboratoire photo **Exporter le calque transparent** (fichier `japan-architecture-overlay.png`), puis importer cet asset local dans Lens Studio. Ce calque est aligné seulement à la photo source, sans suivi automatique. Ne jamais le confondre avec la photo composite. Dans la scène, ajouter un Screen Image affichant cet asset. Garder sa taille adaptée au ratio.
 4. Regrouper la surcouche sous un Scene Object dédié. Ajouter un Script Component utilisant `SceneToggle.js`.
 5. Relier `styleObjects` au(x) Scene Object(s) de surcouche dans l'Inspector; optionnellement relier `statusText`.
 6. Prévisualiser; toucher l'écran pour basculer affichage. Vérifier les erreurs/variations d'API dans la version installée.

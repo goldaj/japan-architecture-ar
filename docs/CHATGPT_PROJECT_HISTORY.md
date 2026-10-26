@@ -32,3 +32,11 @@ Choisit prototype local sur photographie avec sélection manuelle de façade et 
 
 ## Limites
 L'intégralité des discussions anciennes, réponses de l'assistant et heures précises n'est pas accessible via cette conversation; aucun message non vérifié n'est présenté comme verbatim. Pour complétude, intégrer seulement un export authentique après revue d'informations personnelles ou sensibles.
+## Événements Git observés le 2026-10-26 (source : dépôts GitHub)
+- `develop` initialisée, commit `89d01352574c5a731162a1e890c290bdc4b4d219`.
+- Prototype photographique code+tests sur `feat/chatgpt-photo-mvp`, premier commit `5cbc295b9182df3e03e9beb5bd6c61a74ddbceb5` et [PR #1 brouillon](https://github.com/goldaj/japan-architecture-ar/pull/1).
+- [Workflow GitHub Actions 40347699893](https://github.com/goldaj/japan-architecture-ar/actions/runs/40347699893) conclu `success` pour vérification de syntaxe et tests Node du commit initial. Ce résultat ne valide ni navigateur ni Lens Studio.
+- Export PNG transparent de la seule surcouche ajouté après revue pour permettre l'import manuel dans Lens Studio; preuve visuelle mobile toujours absente.
+- Nettoyage de l'incubateur proposé en [PR #2 brouillon](https://github.com/goldaj/projects-incubator/pull/2), sans fusion.
+
+**Fidélité :** ces éléments sont des faits GitHub observés et décisions techniques de l'assistant, pas une transcription inventée des messages.

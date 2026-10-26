@@ -11,6 +11,7 @@ const status = document.querySelector("#status");
 const undoButton = document.querySelector("#undo");
 const resetButton = document.querySelector("#reset");
 const exportButton = document.querySelector("#export");
+const exportOverlayButton = document.querySelector("#export-overlay");
 
 let photograph = null;
 let corners = [];
@@ -28,6 +29,7 @@ function refreshButtons() {
   undoButton.disabled = corners.length === 0;
   resetButton.disabled = corners.length === 0;
   exportButton.disabled = !photograph || corners.length !== 4;
+  exportOverlayButton.disabled = exportButton.disabled;
   opacityValue.textContent = opacityInput.value + " %";
   status.textContent = statusText();
 }
@@ -129,17 +131,19 @@ resetButton.addEventListener("click",() => {corners=[];warning="";redraw();});
 styleInput.addEventListener("change",redraw);
 opacityInput.addEventListener("input",redraw);
 
-exportButton.addEventListener("click",() => {
+function downloadPng(transparent) {
   if (!photograph || corners.length !== 4) return;
   const output = document.createElement("canvas");
   output.width = canvas.width;
   output.height = canvas.height;
   const out = output.getContext("2d");
-  out.drawImage(photograph,0,0,output.width,output.height);
+  if (!transparent) out.drawImage(photograph,0,0,output.width,output.height);
   renderOverlay(out,corners,{style:styleInput.value,opacity:Number(opacityInput.value)/100});
   const link = document.createElement("a");
-  link.download = "japan-architecture-composite.png";
+  link.download = transparent ? "japan-architecture-overlay.png" : "japan-architecture-composite.png";
   link.href = output.toDataURL("image/png");
   link.click();
-});
+}
+exportButton.addEventListener("click",() => downloadPng(false));
+exportOverlayButton.addEventListener("click",() => downloadPng(true));
 redraw();
