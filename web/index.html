@@ -4,40 +4,57 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="color-scheme" content="dark">
-  <title>Japan Architecture AR | Laboratoire photo</title>
+  <title>Japan Architecture AR | Atelier photo</title>
   <link rel="stylesheet" href="./style.css">
   <script type="module" src="./app.mjs"></script>
 </head>
 <body>
-  <main>
-    <header>
-      <p class="eyebrow">Japan Architecture AR · P1</p>
-      <h1>Atelier de façades japonisantes</h1>
-      <p>Charge une photographie et indique les <strong>4 coins d'une façade</strong> dans l'ordre : haut gauche → haut droit → bas droit → bas gauche. Uniquement une expérience 2D, pas encore de la réalité augmentée suivie.</p>
-    </header>
-    <section class="panel controls" aria-label="Contrôles">
-      <label class="file"><span>Photographie locale</span><input id="photo" type="file" accept="image/*"></label>
-      <label>Style
-        <select id="style">
-          <option value="machiya">Machiya · bois et indigo</option>
-          <option value="matsuri">Matsuri · vermillon</option>
-        </select>
+<main>
+  <header>
+    <p class="eyebrow">Japan Architecture AR · Laboratoire photo P1+</p>
+    <h1>Composer des façades d'inspiration japonaise</h1>
+    <p>Sélectionne quatre coins d'une façade, dans l'ordre <strong>haut gauche → haut droit → bas droit → bas gauche</strong>.
+    Ajoute plusieurs façades, puis fais glisser leurs coins pour les ajuster. La scène reste locale et n'est pas une Lens AR suivie.</p>
+  </header>
+  <section class="panel controls" aria-label="Paramètres de composition">
+    <label class="file">Photo sur ton ordinateur
+      <input id="photo" type="file" accept="image/*">
+    </label>
+    <label>Façade à modifier
+      <select id="facade" disabled>
+        <option value="">Aucune façade</option>
+      </select>
+    </label>
+    <label>Ambiance
+      <select id="style">
+        <option value="machiya">Machiya · bois et indigo</option>
+        <option value="matsuri">Matsuri · vermillon</option>
+      </select>
+    </label>
+    <label>Opacité <output id="opacity-value" for="opacity">70 %</output>
+      <input id="opacity" type="range" min="0" max="100" value="70" step="5">
+    </label>
+    <div class="actions">
+      <button id="add" type="button" disabled>Ajouter une façade</button>
+      <button id="undo" type="button" disabled>Annuler le dernier coin</button>
+      <button id="cancel" type="button" disabled>Annuler la sélection</button>
+      <button id="remove" type="button" disabled>Supprimer la façade</button>
+      <button id="reset" type="button" disabled>Effacer toutes les façades</button>
+    </div>
+    <div class="actions">
+      <button id="export" type="button" class="primary" disabled>Exporter la photo modifiée</button>
+      <button id="export-overlay" type="button" disabled>Exporter le calque transparent</button>
+      <button id="save-scene" type="button" disabled>Enregistrer le projet JSON</button>
+      <label class="file small">Recharger un projet JSON
+        <input id="load-scene" type="file" accept=".json,application/json" disabled>
       </label>
-      <label>Opacité <output id="opacity-value" for="opacity">70 %</output>
-        <input id="opacity" type="range" min="0" max="100" value="70" step="5">
-      </label>
-      <div class="actions">
-        <button id="undo" type="button" disabled>Annuler un point</button>
-        <button id="reset" type="button" disabled>Recommencer</button>
-        <button id="export" type="button" class="primary" disabled>Exporter la photo modifiée</button>
-        <button id="export-overlay" type="button" disabled>Exporter le calque transparent</button>
-      </div>
-    </section>
-    <section class="panel workbench" aria-label="Aperçu">
-      <canvas id="preview" width="960" height="540" aria-label="Photographie et quatre points de façade" role="img"></canvas>
-      <p id="status" role="status" aria-live="polite">Choisis une photographie pour commencer.</p>
-    </section>
-    <footer>Aucun upload : le navigateur traite l'image en local. Le rendu est illustratif, ne remplace pas l'architecture réelle et n'identifie pas les bâtiments.</footer>
-  </main>
+    </div>
+  </section>
+  <section class="panel workbench" aria-label="Aperçu de la composition">
+    <canvas id="preview" width="960" height="540" aria-label="Photo et façades avec coins repositionnables" role="img"></canvas>
+    <p id="status" role="status" aria-live="polite">Choisis une photographie pour commencer.</p>
+  </section>
+  <footer>Les images ne sont pas envoyées sur Internet. Le projet JSON ne contient <strong>aucune photographie</strong> : charge la même photo avant de rouvrir le projet. L'association à la photo est vérifiée par son empreinte SHA-256. Rendu illustratif 2D, sans reconnaissance automatique ni suivi spatial.</footer>
+</main>
 </body>
 </html>
