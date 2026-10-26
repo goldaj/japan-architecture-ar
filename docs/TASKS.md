@@ -1,20 +1,22 @@
-# Tâches et état
+# Tâches et état (2026-10-26)
 
-Dernière révision : 2026-10-26 (heure de fin de session non attestée). Les statuts vérifiés seront mis à jour après les actions GitHub.
-
-| ID | Travail | Sous-étapes, livrable et validation | État |
+| ID | Travail | Sous-étapes | État / preuve |
 |---|---|---|---|
-| T0 | Init dépôt | T0.1 lire base, T0.2 AGENTS, T0.3 docs, T0.4 branch develop, T0.5 contexte/handoff | En cours |
-| T1 | Prototype navigateur | T1.1 géométrie/validateur, T1.2 renderer 2 palettes, T1.3 UI + export, T1.4 tests, T1.5 CI | Planifié |
-| T2 | Lens Studio | T2.1 script toggle, T2.2 tutoriel intégration, T2.3 preview desktop, T2.4 mobile | Planifié |
-| T3 | Suivi spatial | T3.1 étude SDK, T3.2 ancrage, T3.3 mesure de dérive | Non démarré |
-| T4 | Segmentation/IA | T4.1 corpus consentement, T4.2 baselines, T4.3 métriques, T4.4 essai embarqué | Non démarré |
-| T5 | Style crédible | T5.1 références architecture, T5.2 procédural + textures libres, T5.3 occlusion | Non démarré |
-| T6 | Qualité mobile | T6.1 FPS, T6.2 mémoire, T6.3 stabilité, T6.4 UX | Non démarré |
-| T7 | Livraison Lens | T7.1 produit, T7.2 conformité, T7.3 publication autorisée | Non démarré |
+| T0 | Fondation | T0.1 dépôt; T0.2 AGENTS; T0.3 docs; T0.4 develop; T0.5 journal | Terminé sur `develop` (commit `89d0135`); lecture de base effectuée |
+| T1 | Atelier photo | T1.1 géométrie; T1.2 rendu deux palettes; T1.3 UI/photo/export; T1.4 tests; T1.5 CI | Implémentation en PR draft `feat/chatgpt-photo-mvp`; vérifier résultats CI / manuel avant clôture |
+| T2 | Premier test Lens | T2.1 script toggle, T2.2 procédure, T2.3 preview, T2.4 téléphone | T2.1 / T2.2 : gabarit codé, **non testé Lens Studio**; T2.3/2.4 à faire |
+| T3 | Suivi spatial | T3.1 SDK, T3.2 ancrage, T3.3 quantification | Pas démarré |
+| T4 | Segmentation et IA | T4.1 corpus autorisé, T4.2 baseline, T4.3 métriques | Pas démarré |
+| T5 | Qualité esthétique | T5.1 matériaux, T5.2 variantes, T5.3 occlusion | Pas démarré |
+| T6 | Évaluation mobile | T6.1 FPS, T6.2 mémoire, T6.3 robustesse | Pas démarré |
+| T7 | Publication | T7.1 conformité, T7.2 UX, T7.3 diffusion | Pas démarré |
 
-## Conditions de fin de tâche
-Tests exécutés / résultat, captures ou protocole manuel vérifié, limitation et confiance, liens commits/PR. Pas de statut « terminé » sans preuve.
+## Mise en garde
+Les tests Node contrôlent seulement la logique géométrique/les appels Canvas, sans vrais pixels ni Snapchat. La validation de rendu visuel demande un navigateur et une photo autorisée. Une CI verte ne suffit pas à clôturer T1/T2.
 
-## Ordre recommandé
-T0 -> T1 -> T2 (vérification) -> T3 -> T4/T5 -> T6 -> T7. T3-T5 peuvent évoluer selon les expériences.
+## Prochaines petites tâches
+1. Vérifier CI de la PR et corriger si nécessaire.
+2. Essai manuel navigateur : import, quad valide/invalide, deux palettes, export PNG, changement de photo.
+3. Capturer résultat/limitations, puis verrouiller P1.
+4. Dans Lens Studio : créer projet natif, connecter le script, documenter errors et FPS.
+5. Décider ensuite si priorité est le suivi 3D ou une segmentation façade offline avant AR.

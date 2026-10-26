@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Japan Architecture AR | Laboratoire photo</title>
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./app.mjs"></script>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">Japan Architecture AR · P1</p>
+      <h1>Atelier de façades japonisantes</h1>
+      <p>Charge une photographie et indique les <strong>4 coins d'une façade</strong> dans l'ordre : haut gauche → haut droit → bas droit → bas gauche. Uniquement une expérience 2D, pas encore de la réalité augmentée suivie.</p>
+    </header>
+    <section class="panel controls" aria-label="Contrôles">
+      <label class="file"><span>Photographie locale</span><input id="photo" type="file" accept="image/*"></label>
+      <label>Style
+        <select id="style">
+          <option value="machiya">Machiya · bois et indigo</option>
+          <option value="matsuri">Matsuri · vermillon</option>
+        </select>
+      </label>
+      <label>Opacité <output id="opacity-value" for="opacity">70 %</output>
+        <input id="opacity" type="range" min="0" max="100" value="70" step="5">
+      </label>
+      <div class="actions">
+        <button id="undo" type="button" disabled>Annuler un point</button>
+        <button id="reset" type="button" disabled>Recommencer</button>
+        <button id="export" type="button" class="primary" disabled>Exporter le PNG</button>
+      </div>
+    </section>
+    <section class="panel workbench" aria-label="Aperçu">
+      <canvas id="preview" width="960" height="540" aria-label="Photographie et quatre points de façade" role="img"></canvas>
+      <p id="status" role="status" aria-live="polite">Choisis une photographie pour commencer.</p>
+    </section>
+    <footer>Aucun upload : le navigateur traite l'image en local. Le rendu est illustratif, ne remplace pas l'architecture réelle et n'identifie pas les bâtiments.</footer>
+  </main>
+</body>
+</html>

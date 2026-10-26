@@ -1,17 +1,25 @@
-# Passation / point de reprise
+# Passation technique Codex : arrêt du 2026-10-26
 
-## État de référence
-2026-10-26 — initialisation en cours. La branche `develop` contient le cadrage et les règles; la réalisation P1 est portée séparément sur une PR brouillon depuis `feat/chatgpt-photo-mvp`.
+## État prouvé
+- `develop` initialisée avec docs et consignes (commit `89d0135`).
+- Branche `feat/chatgpt-photo-mvp` : laboratoire photo navigateur sans dépendances, géométrie convexe normalisée, façades 2 palettes, Canvas, export PNG; tests Node et CI définis; squelette Lens Studio.
+- **Aucune garantie de validation en navigateur ou Lens Studio** tant qu'une session manuelle n'a pas été inscrite.
+- La CI de GitHub doit être relue, ce document ne présume pas son succès avant vérification.
 
-## Avant reprise Codex
-1. Ouvrir AGENTS et historique, vérifier develop et PR.
-2. Identifier la dernière tâche `docs/TASKS.md` réellement clôturée.
-3. Tester `npm test` puis serveur local `python -m http.server 8000`.
-4. Vérifier manuellement l'UI photo/export avant d'affirmer produit utilisable.
-5. Vérifier `lens/SceneToggle.js` dans Lens Studio sur sa version installée; aucune validation Snap faite par ChatGPT.
+## Ordre de reprise
+1. Lire `AGENTS.md`, `docs/CHATGPT_PROJECT_HISTORY.md`, `docs/COORDINATION_CODEX.md`.
+2. Examiner la PR draft vers develop et la CI sur son SHA.
+3. `npm run check && npm test`.
+4. `python -m http.server 8000` puis `http://localhost:8000/web/`; contrôler plusieurs images et l'export.
+5. Corriger/annoter les cas où le quadrilatère ne correspond pas à une façade réelle (perspective approximée).
+6. Créer un vrai projet Lens Studio pour tester `lens/SceneToggle.js`; les fichiers .lsproj et assets de démonstration ne sont pas fournis.
+7. Documenter appareil, version Lens, FPS et crash, puis passer aux plans 3D et au suivi.
 
-## Risques à ne pas perdre
-Pas de pose 3D, pas de segmentation IA, pas de confidentialité cloud à gérer à ce stade, aucune promesse de compatibilité mobile. Ne pas confondre une surcouche sur quad 2D et un bâtiment transformé en AR.
+## Blocages et dette
+- Importation d'asset Screen Image manuelle. Pas d'outil de packaging Lens Studio, ni caméra intégrée en navigateur.
+- Code de calcul 2D illustration, non IA.
+- Segmentation façade indisponible; tracking/occlusion non implémentés.
+- La mémoire des échanges anciens est partielle; ne jamais combler la transcription par invention.
 
-## Suite prioritaire
-Une fois P1 testée dans l'éditeur navigateur, câbler P2 sur un projet Lens Studio valide. Documenter étape par étape et constater dérive réelle sur téléphone. Ensuite seulement choisir P3.
+## Pourquoi cette tranche?
+Elle teste l'hypothèse la plus simple : une représentation de façade par quatre coins suffit-elle à dessiner un effet visuellement identifiable? Le résultat guidera la complexité de l'étape suivante, au lieu de lancer d'emblée un modèle génératif mobile non maîtrisé.

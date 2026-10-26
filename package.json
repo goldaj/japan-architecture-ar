@@ -1,0 +1,11 @@
+{
+  "name": "japan-architecture-ar",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Dependency-free Japanese facade composition laboratory",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "check": "node --check src/core/geometry.mjs && node --check src/core/render.mjs && node --check web/app.mjs && node --check lens/SceneToggle.js"
+  }
+}
