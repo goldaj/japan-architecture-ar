@@ -32,3 +32,15 @@ Choisit prototype local sur photographie avec sélection manuelle de façade et 
 
 ## Limites
 L'intégralité des discussions anciennes, réponses de l'assistant et heures précises n'est pas accessible via cette conversation; aucun message non vérifié n'est présenté comme verbatim. Pour complétude, intégrer seulement un export authentique après revue d'informations personnelles ou sensibles.
+## 2026-10-26 — Exigence finale de vidéo en direct
+
+**Utilisateur (verbatim, extrait fidèle ; heure précise non attestée) :**
+> Attention, si c'est utile pour la suite on le fait, mais la cible est vraiment la vidéo. Impossible de se contenter de la photo pour ce projet, il faut absoluement que ça soit en vidéo en direct sinon le projet ne fait plus de sens.
+> Si on n'est pas sur de la fidélité de l'environnement d'origine, c'est peu grave, c'est qui compte par contre ça va être la cohérence de la persistance dans le temps
+> Le cas d'usage c'est quoi ? Appeler quelqu'un en visio, faire une petite blague en disant qu'on est au japon (du coup pas trop grave si c'est pas fidèle à 100% sur les éléments, la blague passe), tourner sur soi-même ou se déplacer en marchant, puis couper le filtre pour montrer que c'était un blague et que le logiciel est bluffant !
+> Donc soit c'est un filtre insta, soit c'est autre chose, mais dans tous les cas il va falloir à terme répondre à ce cas d'usage, et celui-ci uniquement.
+
+**Assistant (résumé reconstruit, non verbatim) :**
+Accepte la vidéo temps réel comme **seule réussite produit**; change la priorité : mémoire et cohérence temporelle au détriment de la fidélité pixel-à-pixel. Recherche StreamV2V, StreamDiffusion, Daydream Scope et OBS Virtual Camera. Identifie que Meta Spark, ancien outil de filtres Instagram tiers, a fermé début 2025. Construit un socle `live/` caméra WebRTC bidirectionnel vers Scope avec sortie basculable instantanément, sans vidéo IA testée sur matériel réel. Le client nécessite un serveur Scope existant et un modèle préchargé, non inclus. Pas de code ou de résultat non démontré présenté comme fonctionnel.
+
+**Note confidentialité :** Aucune des images sources, cibles et vidéos personnelles fournies en conversation n'a été ajoutée au dépôt public. Historique antérieur non intégralement accessible; aucune transcription supplémentaire inventée.

@@ -1,31 +1,22 @@
-# Roadmap de recherche et développement
+# Roadmap uniquement « faux Japon en visioconférence live »
 
-Chaque étape porte un critère d'arrêt « démonstration observable », et non une simple liste d'outils.
+| Phase | Livrable vérifiable | État |
+|---|---|---|
+| L0 | Architecture événement live, choix de moteurs et critères de persistance | Spécification en cours |
+| L1 | Capture caméra en streaming WebRTC, Scope reçu, bascule réalité sans rechargement | **Code frontend/backend présent; IA sur matériel réel non testée** |
+| L2 | Moteur vidéo génératif effectivement produit en continu; prompt japonais | À valider sur GPU >=24 Go ou alternative |
+| L3 | Maintien identité générée en tournant 90/180/360°; comparer modèles/mémoire | Pas démarré |
+| L4 | Afficher flux dans OBS Virtual Camera et appeler une personne sans couper la visio | Pas démarré |
+| L5 | Caméra smartphone mobile, transport réseau, marche; latence et dégradation | Pas démarré |
+| L6 | Optimiser le pipeline matériel/qualité/coûts; choisir distribution finale | Pas démarré |
 
-| Phase | But | Livrable de contrôle | Porte de sortie |
-|---|---|---|---|
-| P0 | Référentiel et protocole | docs, AGENTS, CI | contexte et tests compréhensibles |
-| P1 | Laboratoire photo manuel | appli web + export | 4 coins, 2 styles, PNG, tests |
-| P2 | Lens Studio first contact | script d'affichage + projet manuel | export et bascule fonctionnent dans Lens Studio sur téléphone |
-| P3 | Surfaces + suivi | scène AR ancrée | alignement mesuré pendant 5 mouvements |
-| P4 | Détection | évaluation sur petit corpus autorisé | qualité de masque/pose quantifiée |
-| P5 | Japonisation structurée | 2-3 motifs combinables + occlusion | cohérence sur au moins 10 scènes |
-| P6 | Mobile + expérience | Lens utilisable | latence/FPS, batterie, crash et UX mesurés |
-| P7 | Distribution | publication contrôlée | validation produit et conformité |
+**Aucun jalon photo standalone ni vidéo pré-enregistrée à livrer.** Des clips peuvent servir comme signaux reproductibles de benchmark pour tester la persistance, seulement si cela sert directement la cible live.
 
-## Questions de recherche
-- Q1 : combien de temps tient une texture écran sans tracking avant dérive inacceptable?
-- Q2 : segmentation 2D suffit-elle, ou doit-on reconstruire au moins des plans 3D?
-- Q3 : composition de motifs procéduraux contre génération d'images distante : compromis qualité / temps / coûts / cohérence temporelle?
-- Q4 : la performance sur une scène de jour généralise-t-elle à nuit, pluie et occlusions?
-- Q5 : faut-il un traitement image local, un modèle embarqué, ou un pipeline hors-ligne ?
+## Priorités
+1. Fonctionnement V2V **live réel**, même peu joli, sur GPU disponible.
+2. Cohérence dans le temps à rotation + loop closure.
+3. Bascule « révèle la blague » instantanée.
+4. Intégration visio et marche avec caméra mobile.
+5. Qualité visuelle; pas de fidélité exacte exigée.
 
-## Métriques envisagées
-- Erreur moyenne d'alignement de coins (pixels normalisés ou degrés), constatée par annotation manuelle.
-- Stabilité temporelle : jitter, dérive sur une séquence, occultations.
-- FPS médian + p95 temps image + RAM + énergie; résultats par appareil.
-- Taux de réussite : bâtiment détecté / plan exploitable / effet jugé convaincant (annotateurs, protocoles précisés).
-- Attribution du coût : offline et online séparés.
-
-## Anti-auto-illusion
-Un screenshot flatteur sur une seule photo n'est pas une Lens utilisable. Pour chaque expérimentation, noter nombre d'images, provenance, protocole reproductible, échecs et limites.
+Voir docs/ADR_0002_LIVE_ONLY.md.

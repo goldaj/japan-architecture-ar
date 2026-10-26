@@ -1,17 +1,24 @@
-# Passation / point de reprise
+# Passation Codex : uniquement cas d'usage visio Japon live
 
-## État de référence
-2026-10-26 — initialisation en cours. La branche `develop` contient le cadrage et les règles; la réalisation P1 est portée séparément sur une PR brouillon depuis `feat/chatgpt-photo-mvp`.
+**Date 2026-10-26.** Nouvelle demande explicite : la photo retouchée n'a aucune valeur comme livraison autonome. L'utilisateur veut une **visio réelle**, caméra mobile/qui tourne, environnement japonais crédible qui reste cohérent au retour, et bouton de révélation immédiat. Exactitude des bâtiments réels facultative; **consistance du monde généré obligatoire**.
 
-## Avant reprise Codex
-1. Ouvrir AGENTS et historique, vérifier develop et PR.
-2. Identifier la dernière tâche `docs/TASKS.md` réellement clôturée.
-3. Tester `npm test` puis serveur local `python -m http.server 8000`.
-4. Vérifier manuellement l'UI photo/export avant d'affirmer produit utilisable.
-5. Vérifier `lens/SceneToggle.js` dans Lens Studio sur sa version installée; aucune validation Snap faite par ChatGPT.
+## Lire en premier
+1. `AGENTS.md`, `docs/ADR_0002_LIVE_ONLY.md` et `docs/EXPERIMENTS.md`.
+2. `docs/RESEARCH_LIVE.md` et `docs/ARCHITECTURE.md`.
+3. `docs/TASKS.md` et `docs/CHATGPT_PROJECT_HISTORY.md`.
+4. [Branche de travail](https://github.com/goldaj/japan-architecture-ar/tree/feat/live-webrtc-foundation), [PR #1 (géométrie)](https://github.com/goldaj/japan-architecture-ar/pull/1) et [PR #5 (photo IA)](https://github.com/goldaj/japan-architecture-ar/pull/5) : ces deux dernières **parked**, ne pas merger.
 
-## Risques à ne pas perdre
-Pas de pose 3D, pas de segmentation IA, pas de confidentialité cloud à gérer à ce stade, aucune promesse de compatibilité mobile. Ne pas confondre une surcouche sur quad 2D et un bâtiment transformé en AR.
+## Avancement technique
+- `live/` : serveur local Node 22, connexion Scope WebRTC et canvas, caméra navigateur, bascule J/R, fallback brut si frames IA périmées, tests simulés. Exigence Scope actuel >=24 Go VRAM.
+- **CI = syntaxe, proxy, WebRTC offer construction et état de bascule seulement.**
+- Aucun test de sortie vidéo japonaise, aucun benchmark 360°, aucun test OBS/visio, aucun téléphone.
+- Scope est une dépendance externe installable séparément, pas un modèle livré avec notre code.
 
-## Suite prioritaire
-Une fois P1 testée dans l'éditeur navigateur, câbler P2 sur un projet Lens Studio valide. Documenter étape par étape et constater dérive réelle sur téléphone. Ensuite seulement choisir P3.
+## Prochaine action utile
+Faire fonctionner réellement Scope sur un GPU adapté (local/cloud), charger un pipeline V2V, tester la réception des frames et corriger seulement les défauts constatés du client. Ensuite tester 360° et loop closure avant d'investir dans effets visuels.
+
+## Attention recherche
+StreamV2V n'implique pas automatiquement mémoire persistante après disparition d'un objet hors champ. Expérimenter feature bank puis, **si échec**, formulation H2 cache d'images-clés associé à la pose/lieu. Pas de reconstruction 3D en aveugle.
+
+## Honnêteté sur confidentialité et performances
+Le flux webcam est transmis au moteur Scope WebRTC une fois que l'utilisateur déclenche la connexion. Si Scope est sur GPU distant, lire conditions fournisseur et sécuriser authentification/chiffrement; ce spike ne supporte que `127.0.0.1:8000`. Aucun temps réel certifié et aucun coût déclaré mesuré.
