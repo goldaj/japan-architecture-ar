@@ -1,0 +1,15 @@
+{
+  "name": "japan-architecture-ar",
+  "version": "0.3.0",
+  "private": true,
+  "type": "module",
+  "description": "AI-first architectural photo editing proof of concept",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node tools/ai-photo-server.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "check": "node --check tools/ai-photo-server.mjs && node --check src/ai/prompt.mjs && node --check src/ai/image-client.mjs && node --check ai/app.mjs"
+  }
+}

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="fr"><head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Japan Architecture AR | Transformation IA</title>
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./app.mjs"></script>
+</head><body><main>
+  <header>
+    <p class="eyebrow">Japan Architecture AR · IA d'abord</p>
+    <h1>Transforme une scène réelle en quartier japonais</h1>
+    <p>Les <strong>bâtiments, arbres, rues, lumière et matériaux</strong> sont réinterprétés ensemble par un modèle d'édition d'image. On conserve au maximum la perspective et les objets du premier plan.</p>
+  </header>
+  <section class="panel controls">
+    <label>Photographie à transformer<input id="photo" type="file" accept="image/jpeg,image/png,image/webp" required></label>
+    <label>Ambiance<select id="preset">
+      <option value="residential">Résidentiel japonais au crépuscule</option>
+      <option value="kyoto">Kyoto traditionnel de jour</option>
+      <option value="tokyo">Tokyo contemporain de nuit</option>
+    </select></label>
+    <label>Modèle<select id="model">
+      <option value="gpt-image-2.5-flare">Flare : rapide pour explorer</option>
+      <option value="gpt-image-2.5-sunburst">Sunburst : qualité / précision</option>
+    </select></label>
+    <label>Qualité (coût variable)<select id="quality">
+      <option value="low">Low : économique</option>
+      <option value="medium" selected>Medium : standard</option>
+      <option value="high">High : exigeante</option>
+    </select></label>
+    <label class="wide">Consigne supplémentaire (optionnelle)
+      <textarea id="extra" maxlength="1500" rows="2" placeholder="Exemple : transformer l'arbre devant le bâtiment en cerisier, conserver les cadres des fenêtres."></textarea></label>
+    <label class="wide check"><input id="preserve" type="checkbox" checked> Conserver les cadres, fenêtres, objets et meubles au premier plan (recommandé pour les photos prises depuis l'intérieur)</label>
+  </section>
+  <section class="panel results">
+    <div><h2>Photographie originale</h2><img id="before" alt="Aperçu de la photographie originale"></div>
+    <div><h2>Transformation IA</h2><img id="after" alt="Image transformée par IA" hidden><p id="empty">L'image apparaîtra ici après génération.</p></div>
+  </section>
+  <section class="panel action">
+    <p class="warning"><strong>Envoi et coût :</strong> en cliquant sur Générer, ta photo sera transmise à l'API OpenAI et des frais API pourront s'appliquer. Le serveur n'enregistre ni les photos ni les résultats sur disque. Ne charge pas de photo confidentielle ou contenant des personnes sans leur accord.</p>
+    <label class="check"><input id="consent" type="checkbox"> Je confirme l'envoi de cette photo à OpenAI pour édition payante.</label>
+    <div class="buttons"><button id="generate" disabled>Générer la transformation</button>
+      <a id="download" class="button" hidden download="japan-architecture-ai.png">Télécharger le PNG</a></div>
+    <p id="status" role="status" aria-live="polite">Choisis une photo et confirme l'envoi pour commencer.</p>
+  </section>
+  <footer>Prototype photo-to-photo. Aucune vidéo ni Lens Snapchat en direct à ce stade. La précision géométrique et les éléments préservés dépendent du modèle.</footer>
+</main></body></html>
