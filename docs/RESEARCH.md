@@ -22,3 +22,9 @@
 
 ## Statut des preuves
 Recherche documentaire seulement; **aucun** essai Lens Studio, benchmark smartphone, ni évaluation IA réalisé à cette date.
+
+## Pivot 2026-10-26 : éditeurs d'image et vidéo existants
+Le précédent choix « procédure de traçage de façades » est rétrogradé en spike/historique. API OpenAI Images Edits disponible pour GPT Image 2.5 Flare (rapidité) et Sunburst (précision), avec support JPEG/PNG/WebP et retour image. Voir https://developers.openai.com/api/docs/guides/image-generation et https://developers.openai.com/api/docs/guides/image-prompting.
+- La capture de scène/structure et la gestion des lumières d'une image source font partie de la tâche d'édition générative, sans devoir coder chaque toiture/route/arbre.
+- Une API vidéo existante pourrait être adaptée pour une vidéo courte **hors ligne** : https://docs.dev.runwayml.com/api/ (video-to-video) ou https://developers.openai.com/api/docs/changelog (Sora edits). Compatibilité réelle/accès et coût doivent être mesurés.
+- Aucune de ces références ne constitue une preuve de filtre AR live sur smartphone.

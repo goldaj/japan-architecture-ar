@@ -1,29 +1,23 @@
-# Produit : Japan Architecture AR
+# Vision produit après pivot, 2026-10-26
 
-## Intention
-Regarder des rues réelles à travers un filtre transformant les façades dans une esthétique japonaise : bois, cloisons, enseignes, toitures, lanternes, cohérence d'ensemble. Les styles doivent être nommés (p. ex. machiya/ville historique ou enseignes nocturnes) et être documentés sans caricature.
+## Cible finale
+Utiliser une caméra ou vidéo réelle pour voir **l'environnement entier** transformé avec un style d'architecture japonaise crédible, sans effacer arbitrairement la structure de la scène. Bâtiments, routes, végétation, ciel, éclairage, matériaux et enseignes. Les détails du premier plan (fenêtres, balcons, meubles, personnes éventuelles) doivent rester cohérents.
 
-## Bénéfice / public
-Expérimentation AR créative, tourisme, vidéo courte. Le vrai critère est l'impression de transformation du **bâti existant**, sans remplacer intégralement une scène par une image sans rapport.
+## Critère visuel apporté par l'utilisateur
+Le propriétaire a comparé trois images privées dans la conversation : original, premier filtre géométrique 2D et édition ChatGPT. Le rendu de l'éditeur 2D est jugé largement insuffisant; l'édition générative de toute la scène constitue **le niveau attendu d'exploration**. Aucune de ces photos ne doit être incluse dans le dépôt public.
 
-## MVP 0 : laboratoire photo
-Entrée : une photo locale. Interaction : délimitation manuelle d'une façade quadrilatérale convexe. Résultat : pose déterministe de couleur/poutres/lattes sur cette surface avec deux variations de palette et export PNG. Critères :
-- Pas d'API ni de réseau requis hors serveur local; pas de téléchargement de photo.
-- Coordonnées normalisées, contrôles sur géométrie dégénérée, pas de crash sur absence d'image.
-- Les styles appliquent une vraie géométrie sur une seule façade, tout en restant illustratifs.
-- Tests automatiques géométriques et rendu de commande; vérification visuelle manuelle documentée séparément.
+## Produit progressif
+- POC IA photo : une photo transformée naturellement, comparaison avant/après. Validation manuelle avec photos utilisateur en local et consentement d'appel API.
+- POC vidéo : transformer une vidéo déjà enregistrée avec style stable à travers le temps, sans changer caméra ou silhouettes importantes.
+- Recherche AR : seulement ensuite, parvenir à un retour avec délai faible, suivi spatial et appareil Snapchat compatible.
 
-## MVP 1 : prototype Lens Studio
-Transférer une texture d'habillage transparente pré-générée dans un objet Screen Image, activer/désactiver sur un tap; **alignement seulement pour un point de vue**, dérive quand caméra bouge. Le contenu Lens Studio doit être assemblé dans l'éditeur puis validé sur smartphone.
+## Hors scope immédiat
+Créer un moteur complet de modélisation 3D, dessiner manuellement tous les objets, publication Snapchat, traitement vidéo temps réel garanti et APK Android.
 
-## MVP 2 : suivi AR
-Ancrer façade/objets 3D à la scène et maintenir une pose stable sur mouvements caméra; tester dérive, occultation et luminosité. Choisir Scene Tracking/World Tracking ou approche géométrique après test de faisabilité. Pas de promesse sans données.
+## Hypothèses à tester
+- Le modèle de photo peut être suffisamment fidèle au point de vue réel.
+- Un modèle de vidéo existant peut offrir une meilleure cohérence temporelle que des images indépendantes.
+- Le traitement cloud peut être acceptable pour prototypage, pas nécessairement pour un filtre AR instantané.
 
-## MVP 3 : automatique + IA
-Détecter façades/surfaces, estimer leur géométrie et générer/placer éléments architecturaux; comparer segmentation locale, SnapML / autres solutions compatibles Snap, et éventuellement pré-calcul hors-ligne. Vérifier politiques de données et budgets de latence.
-
-## Hors périmètre immédiat
-Remplacement parfait des bâtiments en vidéo temps réel, reconnaissance de propriétaires, tracking de personnes, géolocalisation nécessaire, photogrammétrie complète de quartiers.
-
-## Risques
-Variété des bâtiments, pièges de perspective, occultation piétons/végétation, droits à l'image, consommation GPU/batterie, restrictions Snapchat, confusion illustration/transformation photoréaliste.
+## Qualité / sécurité
+Évaluer fidélité géométrique, réalisme, diversité des objets transformés, absence de modifications indésirables, latence/coût, vie privée. Le POC nécessite l'envoi de la photo au fournisseur IA seulement après consentement explicite.

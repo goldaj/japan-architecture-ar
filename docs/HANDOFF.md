@@ -1,17 +1,28 @@
-# Passation / point de reprise
+# Passation Codex : pivot IA (2026-10-26)
 
-## État de référence
-2026-10-26 — initialisation en cours. La branche `develop` contient le cadrage et les règles; la réalisation P1 est portée séparément sur une PR brouillon depuis `feat/chatgpt-photo-mvp`.
+## Décision
+Le propriétaire a validé qu'un moteur géométrique de façades fonctionne, mais son rendu est **très inférieur à l'objectif**. Il souhaite transformer toute la scène (bâtiments, routes, arbres, atmosphère) comme un résultat obtenu directement avec ChatGPT. Priorité : **modèles d'édition d'image existants**, puis vidéo.
 
-## Avant reprise Codex
-1. Ouvrir AGENTS et historique, vérifier develop et PR.
-2. Identifier la dernière tâche `docs/TASKS.md` réellement clôturée.
-3. Tester `npm test` puis serveur local `python -m http.server 8000`.
-4. Vérifier manuellement l'UI photo/export avant d'affirmer produit utilisable.
-5. Vérifier `lens/SceneToggle.js` dans Lens Studio sur sa version installée; aucune validation Snap faite par ChatGPT.
+## Nouvelle réalisation
+- Branche `feat/ai-photo-transform` (PR **brouillon** dédiée vers `develop`).
+- `tools/ai-photo-server.mjs` : serveur HTTP Node 22 natif localhost-only, multipart, clé `OPENAI_API_KEY` côté serveur, consentement utilisateur par action explicite, limite fichier, erreur API traitée.
+- `src/ai/image-client.mjs` : appel OpenAI `/v1/images/edits`, modèle Flare / Sunburst, retour PNG.
+- `src/ai/prompt.mjs` : 3 styles, instructions structurées, conservation premier plan optionnelle.
+- `ai/` : UI locale avant/après, upload, génération et download. Les photos personnelles de l'utilisateur ne sont **pas** uploadées dans GitHub.
+- `docs/ADR_0001_AI_FIRST.md` et `docs/VIDEO_ROADMAP.md` expliquent les arbitrages.
 
-## Risques à ne pas perdre
-Pas de pose 3D, pas de segmentation IA, pas de confidentialité cloud à gérer à ce stade, aucune promesse de compatibilité mobile. Ne pas confondre une surcouche sur quad 2D et un bâtiment transformé en AR.
+## Vérifications, précision importante
+- Les tests CI/mock sont destinés à valider la plomberie et les contraintes sans facturation.
+- **Aucun appel API payant**, aucune transformation réellement générée par la branche, **aucune démonstration UI dans un navigateur** à cette date. Les screenshots fournis en chat démontrent seulement les possibilités de ChatGPT, pas cette application.
+- Clé API et facturation utilisateur requises; un abonnement ChatGPT n'inclut pas automatiquement le quota API.
 
-## Suite prioritaire
-Une fois P1 testée dans l'éditeur navigateur, câbler P2 sur un projet Lens Studio valide. Documenter étape par étape et constater dérive réelle sur téléphone. Ensuite seulement choisir P3.
+## Reprise
+1. Lire `AGENTS.md`, `docs/ADR_0001_AI_FIRST.md`, `docs/TASKS.md`, `docs/CHATGPT_PROJECT_HISTORY.md`, et la PR.
+2. `npm test`, `npm run check`. Server : `npm start`, UI : http://127.0.0.1:8765/.
+3. Avec autorisation du propriétaire et clé fournie **dans son environnement local uniquement**, essayer photo réelle; noter seconds/coût/qualité sans publier la photo dans Git.
+4. Corriger API / rendu si le compte du propriétaire a d'autres permissions ou paramètres.
+5. Tester image-to-image robuste et comparer modèles, ensuite video-to-video.
+6. Ne pas effacer la PR #1 : conservée comme prototype manuel, non chemin critique.
+
+## Confidentialité
+La **branche IA envoie volontairement** l'image vers OpenAI après confirmation au clic. Le prototype procédural ancien était hors ligne. Toute description du système doit expliciter cette différence. N'expose jamais cette app locale sur Internet.

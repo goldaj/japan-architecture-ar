@@ -1,31 +1,17 @@
-# Roadmap de recherche et développement
+# Roadmap actualisée : image → vidéo → possible réalité augmentée
 
-Chaque étape porte un critère d'arrêt « démonstration observable », et non une simple liste d'outils.
+| Phase | Livrable | Porte de décision |
+|---|---|---|
+| R0 (fait) | Évaluation du rendu géométrique sur photo, refusé comme solution principale | Le pivot vers modèles génératifs est décidé |
+| R1 (code écrit) | POC API d'édition photo et UI avant/après | Vérifier que l'appel réel rend une image |
+| R2 | Comparatifs prompts/modèles/qualités/coûts sur corpus autorisé | Qualité scène entière validée sur plusieurs exemples |
+| R3 | Démo vidéo préenregistrée video-to-video, style contrôlé par photo référence | Mouvement et détails stables dans le temps |
+| R4 | Prototype de traitement vidéo avec délai mesuré | Latence et cohérence acceptables ou redéfinition de portée |
+| R5 | Intégration Lens Studio, sous contraintes de l'écosystème | Compatibilité et performances réelles smartphone |
+| R6 | Produit de distribution | Conformité, droits et consentements |
 
-| Phase | But | Livrable de contrôle | Porte de sortie |
-|---|---|---|---|
-| P0 | Référentiel et protocole | docs, AGENTS, CI | contexte et tests compréhensibles |
-| P1 | Laboratoire photo manuel | appli web + export | 4 coins, 2 styles, PNG, tests |
-| P2 | Lens Studio first contact | script d'affichage + projet manuel | export et bascule fonctionnent dans Lens Studio sur téléphone |
-| P3 | Surfaces + suivi | scène AR ancrée | alignement mesuré pendant 5 mouvements |
-| P4 | Détection | évaluation sur petit corpus autorisé | qualité de masque/pose quantifiée |
-| P5 | Japonisation structurée | 2-3 motifs combinables + occlusion | cohérence sur au moins 10 scènes |
-| P6 | Mobile + expérience | Lens utilisable | latence/FPS, batterie, crash et UX mesurés |
-| P7 | Distribution | publication contrôlée | validation produit et conformité |
+## Écueils
+Aucune API de génération image ne promet automatiquement un flux 30 FPS. Une génération vidéo offline n'est pas une Lens de caméra en direct. Les métriques (coût, latence, stabilité) commandent les arbitrages, pas les noms de modèles.
 
-## Questions de recherche
-- Q1 : combien de temps tient une texture écran sans tracking avant dérive inacceptable?
-- Q2 : segmentation 2D suffit-elle, ou doit-on reconstruire au moins des plans 3D?
-- Q3 : composition de motifs procéduraux contre génération d'images distante : compromis qualité / temps / coûts / cohérence temporelle?
-- Q4 : la performance sur une scène de jour généralise-t-elle à nuit, pluie et occlusions?
-- Q5 : faut-il un traitement image local, un modèle embarqué, ou un pipeline hors-ligne ?
-
-## Métriques envisagées
-- Erreur moyenne d'alignement de coins (pixels normalisés ou degrés), constatée par annotation manuelle.
-- Stabilité temporelle : jitter, dérive sur une séquence, occultations.
-- FPS médian + p95 temps image + RAM + énergie; résultats par appareil.
-- Taux de réussite : bâtiment détecté / plan exploitable / effet jugé convaincant (annotateurs, protocoles précisés).
-- Attribution du coût : offline et online séparés.
-
-## Anti-auto-illusion
-Un screenshot flatteur sur une seule photo n'est pas une Lens utilisable. Pour chaque expérimentation, noter nombre d'images, provenance, protocole reproductible, échecs et limites.
+## Documentation
+ADR-0001 détaille l'abandon de la voie principale procédurale; VIDEO_ROADMAP cadre les variantes pour vidéo, tracking et AR.

@@ -32,3 +32,16 @@ Choisit prototype local sur photographie avec sélection manuelle de façade et 
 
 ## Limites
 L'intégralité des discussions anciennes, réponses de l'assistant et heures précises n'est pas accessible via cette conversation; aucun message non vérifié n'est présenté comme verbatim. Pour complétude, intégrer seulement un export authentique après revue d'informations personnelles ou sensibles.
+
+## 2026-10-26, pivot de stratégie confirmé par l'utilisateur (heure non attestée)
+
+**Utilisateur (extrait verbatim pertinent, reproduction partielle sur dépôt public) :**
+> oui le moteur marche. Mais là on est vraiment à l'étape 0.1, c'est bien au-dessous de ce que je te demandais et de ce que j'espérais.
+> D'ailleurs il n'y a que les façade alors qu'à terme on veut les bâtiment, les routes, les arbres, etc, etc...
+> Je PENSE qu'il faut tout de suite partir sur des API d'IA et quelque chose qui transforme au moins une photo naturellement grâce à des models existants, pour ensuite le faire basculer sur de la vidéo.
+
+**Contexte (résumé vérifié)** : l'utilisateur a joint trois images (photo originale, rendu géométrique, cible photoréaliste issue de ChatGPT). Leur contenu **n'est pas publié sur GitHub** et n'est pas attaché au dépôt.
+
+**Assistant (résumé reconstruit, non verbatim)** : reconnaît que le POC géométrique ne satisfait pas la cible, décide de prioriser un nouveau POC IA photo-to-photo, puis d'étudier la vidéo existante. Conserve l'ancien code sur sa PR #1 draft, crée une nouvelle branche `feat/ai-photo-transform` séparée. Implémente un serveur Node local avec OpenAI Images Edit, options modèle/qualité, interface avant/après et tests gratuits à service simulé. Le serveur envoie la photo au fournisseur uniquement après action/consentement de l'utilisateur.
+
+**Limite de preuve** : CI vérifie le code sans API; aucune véritable image IA générée par cette branche et aucun test vidéo ou mobile effectués. Les limites commerciales et techniques devront être revalidées lors du test sur l'environnement utilisateur.

@@ -1,20 +1,30 @@
-# Tâches et état
+# Plan révisé 2026-10-26 : passage à l'édition IA d'abord
 
-Dernière révision : 2026-10-26 (heure de fin de session non attestée). Les statuts vérifiés seront mis à jour après les actions GitHub.
-
-| ID | Travail | Sous-étapes, livrable et validation | État |
+| ID | Objectif | État démontré | Sortie attendue |
 |---|---|---|---|
-| T0 | Init dépôt | T0.1 lire base, T0.2 AGENTS, T0.3 docs, T0.4 branch develop, T0.5 contexte/handoff | En cours |
-| T1 | Prototype navigateur | T1.1 géométrie/validateur, T1.2 renderer 2 palettes, T1.3 UI + export, T1.4 tests, T1.5 CI | Planifié |
-| T2 | Lens Studio | T2.1 script toggle, T2.2 tutoriel intégration, T2.3 preview desktop, T2.4 mobile | Planifié |
-| T3 | Suivi spatial | T3.1 étude SDK, T3.2 ancrage, T3.3 mesure de dérive | Non démarré |
-| T4 | Segmentation/IA | T4.1 corpus consentement, T4.2 baselines, T4.3 métriques, T4.4 essai embarqué | Non démarré |
-| T5 | Style crédible | T5.1 références architecture, T5.2 procédural + textures libres, T5.3 occlusion | Non démarré |
-| T6 | Qualité mobile | T6.1 FPS, T6.2 mémoire, T6.3 stabilité, T6.4 UX | Non démarré |
-| T7 | Livraison Lens | T7.1 produit, T7.2 conformité, T7.3 publication autorisée | Non démarré |
+| A0 | Cadrage & recherches API images | Fait : API OpenAI et options documentées | ADR-0001, promesses vs limites |
+| A1 | POC photo-to-photo OpenAI | Code poussé PR IA séparée; CI de tests simulés verte sur commit initial | User charge une photo, clique Générer, compare et exporte PNG |
+| A2 | Évaluation qualité des images | **Non testé avec une vraie clé et modèle**, aucune donnée facturée | 5-10 scènes, comparaisons Flare/Sunburst, preservation/artefacts/cost |
+| A3 | Robustesse interface & sécurité | Validation de paramètres/clé serveur, endpoint loopback et consentement codés; tests mocked | test navigateur, erreurs 401/403/429, vrais PNG |
+| V1 | Vidéo préenregistrée | Étude seulement | video-to-video cohérent sur clip court |
+| V2 | Vidéo quasi réelle | Exploration non débutée | latence et FPS mesurés |
+| V3 | Lens Studio en direct | Non débuté | prototype natif validé sur téléphone |
 
-## Conditions de fin de tâche
-Tests exécutés / résultat, captures ou protocole manuel vérifié, limitation et confiance, liens commits/PR. Pas de statut « terminé » sans preuve.
+## Travail parallèle préservé
+- [PR #1 procédurale](https://github.com/goldaj/japan-architecture-ar/pull/1) : outil pour dessiner/sélectionner des façades en 2D, visuellement très loin du produit cible, **ne plus prioriser comme chemin principal**.
+- Ne pas effacer la PR et le code historique; une intégration éventuelle de masque/ROI ou annotations peut être utile.
+- Branches séparées, PR draft vers develop, revue avant fusion.
 
-## Ordre recommandé
-T0 -> T1 -> T2 (vérification) -> T3 -> T4/T5 -> T6 -> T7. T3-T5 peuvent évoluer selon les expériences.
+## Prochaines sous-étapes
+A2.1 : exécuter un test **volontaire** et payant de l'image originale avec le preset résidentiel, Flare/medium.
+A2.2 : comparer au visuel attendu, noter dérive balcon/fenêtre/voiture/toitures/arbre/ciel.
+A2.3 : Sunburst/high, prompts plus précis; mesurer budget et durée.
+A2.4 : varier scènes (extérieur direct, route, végétation dense).
+A3.1 : traiter bugs issus des essais, contrôler publication des exemples et clé locale.
+V1.1 : tester API video-to-video sans prétendre que cela offre de l'AR temps réel.
+
+## Conditions d'acceptation
+- Résultat réellement édité à partir d'une photo, pas juste un quadrilatère.
+- Aucune mention d'une validation photoréaliste sans essai API réel.
+- Aucune photo personnelle dans le dépôt public ni clé côté navigateur.
+- Tests CI sans coût, requêtes réelles uniquement après clic explicite.

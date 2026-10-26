@@ -1,7 +1,7 @@
 # Consignes ChatGPT / Codex
 
 ## Mission
-Transformer visuellement des façades et paysages bâtis vers une esthétique d'architecture japonaise. Périmètre environnement et bâtiments, **pas** retouche du visage ou des personnes. Première cible : prototype navigateur autonome, puis Lens Studio / Snapchat.
+Transformer **l'ensemble de scènes réelles** (bâtiments, toitures, routes, arbres, ciel et éclairage) vers une esthétique japonaise photoréaliste tout en préservant la géométrie et les éléments du premier plan. Périmètre **environnement**, pas retouche des personnes. **Nouvelle priorité validée par le propriétaire le 26/10/2026** : API d'édition d'images existantes, puis video-to-video et, seulement ensuite, piste AR Snapchat. Ancienne PR #1 de calques géométriques conservée comme expérience non prioritaire. Lire docs/ADR_0001_AI_FIRST.md.
 
 ## Où lire en premier
 1. `README.md` et `docs/PRODUCT.md`
@@ -15,7 +15,7 @@ Transformer visuellement des façades et paysages bâtis vers une esthétique d'
 - Branches de fonctionnalités vers `develop`; travail ChatGPT sur branche dédiée et PR **draft**. Ne jamais écraser le travail Codex; intervenir sur de petits lots indépendants.
 - Distinguer prototypes sur photo, Lens Studio, véritable AR avec suivi, et IA : aucun de ces stades n'implique le suivant.
 - Documenter hypothèses et limites, conditions d'acceptation, résultats de tests réellement lancés. Ne pas déclarer "fonctionnel Snapchat" sans test Lens Studio + téléphone.
-- Les photos restent dans le navigateur et ne sont pas envoyées. Aucun secret, visage d'autrui, lieu personnel, accès privé ou fichier Lens fermé/licencié dans Git.
+- **La nouvelle branche IA est différente du vieux prototype local** : avec consentement explicite au clic, la photographie est transmise à l'API OpenAI et la requête est facturable. Ne jamais annoncer que toute l'expérience est hors ligne. Protéger strictement OPENAI_API_KEY (variable d'environnement serveur, jamais browser/GitHub/log). Ne pas publier de photos réelles personnelles, lieux privés, sorties utilisateurs, jetons ou exports dans Git. L'ancienne branche procédurale reste, elle, entièrement locale.
 - Si une API Lens Studio n'est pas validée dans la version installée, la noter comme restant à valider.
 - À chaque intervention mettre à jour `docs/TASKS.md`, `docs/HANDOFF.md` et le journal de contexte, avec horodatage seulement quand attesté; distinguer verbatim et résumé reconstitué.
 - CI de code pur : `npm test` (Node 20+); visualisation navigateur en local. Tests manuels Lens Studio séparés.
@@ -23,3 +23,7 @@ Transformer visuellement des façades et paysages bâtis vers une esthétique d'
 
 ## Décision de priorité
 Apprendre avec une petite tranche vérifiable, puis améliorer. La détection des façades, la cohérence temporelle et la génération d'architectures crédibles sont des défis ouverts, non des fonctionnalités déjà disponibles.
+## Coordination du pivot IA
+- [Décision architecturale](docs/ADR_0001_AI_FIRST.md) et [plan vidéo](docs/VIDEO_ROADMAP.md) sont désormais la référence de direction.
+- Branche ChatGPT `feat/ai-photo-transform`, PR draft vers `develop`. PR procédurale #1 préservée; ne pas merger l'une ou l'autre automatiquement.
+- Tests CI via service simulé seulement; **aucun** appel payant ni évaluation photoréaliste réelle dans les tests automatisés. Enregistrer tout test réel avec modèle, qualité, timing, coût si disponible et comparaison à la photo cible sans publier les images personnelles.
