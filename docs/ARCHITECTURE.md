@@ -5,16 +5,19 @@
 - `web/app.mjs` : contrôleur navigateur et rendu Canvas.
 - `src/core/geometry.mjs` : fonctions pures de quadrilatère, interpolation bilinéaire, validation.
 - `src/core/render.mjs` : décor architectural procédé de tracés Canvas, palettes distinctes.
+- `src/core/scene.mjs` : modèle de scène immuable et versionné (plusieurs façades), validation, hit-test, sérialisation JSON liée à l’image par SHA-256.
 - `tests/*.test.mjs` : Node `--test` (sans dépendances tierces).
 - `lens/SceneToggle.js` : simple gabarit de bascule pour Lens Studio, test éditeur requis.
 
-Les images restent en RAM du navigateur; pas de serveur distant. Le serveur HTTP local sert uniquement les fichiers du dépôt. L'export est déclenché localement par lien `download`.
+Les images restent en RAM du navigateur; pas de serveur distant. Le serveur HTTP local sert uniquement les fichiers du dépôt. L'export est déclenché localement par lien `download`. La photo est traitée en local, son empreinte SHA-256 calculée via Web Crypto (donc `localhost` ou HTTPS requis). Le projet JSON contient des points et réglages, le nom/tailles et le hash de la photo, **pas les pixels de la photo**. Voir `docs/SCENE_FORMAT.md`.
 
 ## Limites P1
 - Perspective approximée par interpolation bilinéaire d'un quad, pas homographie 3D.
-- Une façade à la fois; pas de masquage piétons / profondeur / vitrines.
+- Plusieurs façades sur une même photo, mais **sans** masquage piétons / profondeur / vitrines et avec possibilité de chevauchements.
+- 24 façades maximum et 25 Mo maximum par image ; limites de sécurité/ergonomie, pas un benchmark d'appareil.
 - Styles dessinés en surcouche, pas de réinterprétation photo par modèle.
-- L'image exportée est **composée** (photo + overlay), pas un asset automatiquement utilisable comme suivi AR.
+- Deux PNG exportables : photo composée et surcouche avec alpha. Les PNG sont liés au point de vue photographié, pas des assets automatiquement suivis en réalité augmentée.
+- Le nom de fichier et l'empreinte SHA-256 dans les JSON peuvent constituer des métadonnées sensibles ; ne pas committer des scènes personnelles dans un dépôt public.
 
 ## Lens Studio P2
 Assembler manuellement un projet :

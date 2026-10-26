@@ -40,3 +40,18 @@ L'intégralité des discussions anciennes, réponses de l'assistant et heures pr
 - Nettoyage de l'incubateur proposé en [PR #2 brouillon](https://github.com/goldaj/projects-incubator/pull/2), sans fusion.
 
 **Fidélité :** ces éléments sont des faits GitHub observés et décisions techniques de l'assistant, pas une transcription inventée des messages.
+
+
+## 2026-10-26 — Deuxième tranche de développement (conversation courante)
+
+**Utilisateur, verbatim (heure précise non attestée) :**
+> tu peux déjà aller un peu plus loin dans le dev avant qu'on fasse des tests ?
+
+**Assistant, résumé reconstruit et non verbatim :**
+Propose d'étendre le laboratoire photo avant une séance manuelle avec multi-façades, déplacement des coins, sauvegarde JSON. Décide de conserver ce travail sur la PR #1 brouillon sans fusion et de garder la validation visuelle pour la suite.
+
+**Travail Git vérifiable :**
+- Commit `fa6c49c4e34373325f70573eb3bf69690aeac6ae` : modèle de scène immuable `src/core/scene.mjs`, contrôles purs et tests.
+- Commit `0bf7bdd2ee69222aa08a4a013d72c74b50446925` : UI d'édition multi-façades, glisser-déposer des coins, sauvegarde/rechargement JSON lié au SHA-256 de la photo, export composite et alpha.
+- GitHub Actions : [workflow de PR 40350461490](https://github.com/goldaj/japan-architecture-ar/actions/runs/40350461490) **success**, Node check/tests. Aucune validation navigateur/Lens Studio ni expérience sur smartphone.
+- `docs/SCENE_FORMAT.md` spécifie le nouveau contrat de sauvegarde et ses limitations.

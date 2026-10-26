@@ -5,7 +5,7 @@ Chaque étape porte un critère d'arrêt « démonstration observable », et non
 | Phase | But | Livrable de contrôle | Porte de sortie |
 |---|---|---|---|
 | P0 | Référentiel et protocole | docs, AGENTS, CI | contexte et tests compréhensibles |
-| P1 | Laboratoire photo manuel | appli web + export | 4 coins, 2 styles, PNG, tests |
+| P1 | Éditeur photo multi-façades | web + exports PNG + projet JSON lié à la photo | 4 coins modifiables, plusieurs façades, 2 styles, tests Node + vérification visuelle |
 | P2 | Lens Studio first contact | script d'affichage + projet manuel | export et bascule fonctionnent dans Lens Studio sur téléphone |
 | P3 | Surfaces + suivi | scène AR ancrée | alignement mesuré pendant 5 mouvements |
 | P4 | Détection | évaluation sur petit corpus autorisé | qualité de masque/pose quantifiée |

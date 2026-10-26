@@ -7,11 +7,13 @@ Regarder des rues réelles à travers un filtre transformant les façades dans u
 Expérimentation AR créative, tourisme, vidéo courte. Le vrai critère est l'impression de transformation du **bâti existant**, sans remplacer intégralement une scène par une image sans rapport.
 
 ## MVP 0 : laboratoire photo
-Entrée : une photo locale. Interaction : délimitation manuelle d'une façade quadrilatérale convexe. Résultat : pose déterministe de couleur/poutres/lattes sur cette surface avec deux variations de palette et export PNG. Critères :
-- Pas d'API ni de réseau requis hors serveur local; pas de téléchargement de photo.
-- Coordonnées normalisées, contrôles sur géométrie dégénérée, pas de crash sur absence d'image.
-- Les styles appliquent une vraie géométrie sur une seule façade, tout en restant illustratifs.
-- Tests automatiques géométriques et rendu de commande; vérification visuelle manuelle documentée séparément.
+Entrée : une photo locale. Interaction : délimitation manuelle de **plusieurs** façades quadrilatérales convexes (24 maximum), sélection et glisser-déposer de leurs coins, style et opacité propres à chaque façade. Résultat : pose déterministe de couleur/poutres/lattes avec deux palettes et deux exports PNG (composite/transparent). Critères :
+- Pas d'API distante ni de transfert de photographie; le serveur local ne fournit que le code.
+- Validation des quatre coins, de l'aire et de la convexité, coordonnées normalisées, sélection/modification immuables.
+- Scène JSON sauvegardable/importable, format versionné; photo associée par SHA-256 calculé localement, photo **non embarquée**.
+- Échecs de validation des fichiers importés et géométries gérés sans corrompre la scène courante.
+- Deux styles sur plusieurs façades, rendu illustratif sans segmentation et sans suivi spatial.
+- Tests automatiques géométrie, scène et rendu; vérification visuelle navigateur obligatoire avant de déclarer le MVP validé.
 
 ## MVP 1 : prototype Lens Studio
 Transférer une texture d'habillage transparente pré-générée dans un objet Screen Image, activer/désactiver sur un tap; **alignement seulement pour un point de vue**, dérive quand caméra bouge. Le contenu Lens Studio doit être assemblé dans l'éditeur puis validé sur smartphone.
