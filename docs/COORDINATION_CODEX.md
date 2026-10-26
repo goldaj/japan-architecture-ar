@@ -42,3 +42,17 @@ L'utilisateur a demandé explicitement : « tu peux déjà aller un peu plus loi
 - [Issue #2](https://github.com/goldaj/japan-architecture-ar/issues/2) étendue pour test sur photos, multi-façades, manipulation de points, export alpha, persistance/rejet JSON et vie privée.
 - Prochain jalon : test de navigateur et revue de qualité, **pas** passage prématuré à segmentation/AR en prétendant la fonction prête. Voir aussi #3 et #4.
 - Les fichiers JSON personnels peuvent révéler le nom/hash de photo; ne pas publier d'exemples personnels dans le repo.
+
+## 2026-10-26 : pivot visuel validé par le propriétaire
+**IMPORTANT : cette section remplace la priorité stratégique des paragraphes historiques, qui restent conservés pour traçabilité.**
+
+Après un essai sur photo réelle, l'utilisateur indique que le rendu en rectangles sur façades est très en-dessous de l'ambition, et vise une transformation photoréaliste **de toute la scène** : bâtiments, routes, arbres, ciel, éclairage. La référence qualitative est une édition d'image faite directement avec ChatGPT, fournie en conversation mais **non** committée (photographie personnelle).
+
+- **Nouveau travail prioritaire :** [PR #5 AI-first](https://github.com/goldaj/japan-architecture-ar/pull/5) sur `feat/ai-photo-transform`, toujours **brouillon**. Contient `docs/ADR_0001_AI_FIRST.md`, `docs/VIDEO_ROADMAP.md`, UI + serveur Node 22 local et API OpenAI Images Edit (Flare / Sunburst).
+- CI automatisée uniquement avec faux appels API : aucune facture ni image utilisateur générée par nos tests. La validation de qualité reste [issue #6](https://github.com/goldaj/japan-architecture-ar/issues/6).
+- **Étape suivante** après qualité photo : [issue #7](https://github.com/goldaj/japan-architecture-ar/issues/7) étude video-to-video sur clip court, ne pas implémenter frame par frame sans tests de scintillement.
+- **Ancienne voie en sommeil** : [PR #1](https://github.com/goldaj/japan-architecture-ar/pull/1) et issues #2–#4, non supprimées et non fusionnées. Elles n'ont pas la priorité.
+- L'ancienne règle « les photos restent dans le navigateur » ne s'applique **pas** au nouveau POC IA : les images sont envoyées à OpenAI après consentement au clic (informations dans le README de la branche AI). Ne jamais mettre la clé API dans Git ou le navigateur, ni les images utilisateur en Git public.
+- Aucun produit Snapchat ni vidéo live ne découle automatiquement de l'API photo. Le modèle d'image est destiné d'abord à évaluer l'objectif esthétique.
+
+Après toute reprise, lire d'abord les changements de la PR #5 et l'historique lié; ne pas supposer que `develop` contient déjà le code IA.
