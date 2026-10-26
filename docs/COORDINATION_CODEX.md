@@ -25,3 +25,9 @@ Ne jamais prétendre posséder les conversations complètes. L'archive actuelle 
 
 ## Point d'arrêt
 Consulter `docs/HANDOFF.md` à la reprise et vérifier les PR et tests CI les plus récents.
+## Suivi final de la première session, 2026-10-26
+- [PR de réalisation #1](https://github.com/goldaj/japan-architecture-ar/pull/1), SHA validé : `15dadffec151e007cd10aa4a16934f6f4f8b06ff`.
+- CI de la PR : https://github.com/goldaj/japan-architecture-ar/actions/runs/40348205111 (**success** sur Node; aucun test d'interface réel).
+- [#2 validation visuelle](https://github.com/goldaj/japan-architecture-ar/issues/2), [#3 Lens Studio](https://github.com/goldaj/japan-architecture-ar/issues/3), [#4 tracking et segmentation](https://github.com/goldaj/japan-architecture-ar/issues/4).
+- L'export transparent du calque facilite un P2 manuel, mais l'alignement reste limité à une photo.
+- [PR nettoyage incubateur #2](https://github.com/goldaj/projects-incubator/pull/2), **brouillon non fusionné**.
