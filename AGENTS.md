@@ -23,3 +23,8 @@ Transformer visuellement des façades et paysages bâtis vers une esthétique d'
 
 ## Décision de priorité
 Apprendre avec une petite tranche vérifiable, puis améliorer. La détection des façades, la cohérence temporelle et la génération d'architectures crédibles sont des défis ouverts, non des fonctionnalités déjà disponibles.
+## PRIORITÉ ACTUELLE (2026-10-26) — SUPPLANTE LES OBJECTIFS PRÉCÉDENTS
+L'utilisateur a fixé une **unique cible produit** : visio en direct en faisant croire à un paysage japonais, déplacement et rotation 360°, scène générée **cohérente et persistante dans le temps**, puis **bascule instantanée** vers caméra brute pour révéler la blague. La fidélité des objets originaux est secondaire. La photo seule ou la vidéo hors-ligne **ne sont jamais des livrables acceptables**. Suivre les docs et le code sur [PR #8](https://github.com/goldaj/japan-architecture-ar/pull/8) branche `feat/live-webrtc-foundation`, en particulier `docs/ADR_0002_LIVE_ONLY.md`, `docs/EXPERIMENTS.md`, `docs/HANDOFF.md`.
+**Statut** : socle WebRTC/Scope écrit et CI simulée, aucune vidéo IA réelle ni visio testée. Scope local demande >=24 Go VRAM selon sa documentation.
+Les PR #1 (calques) et #5 (photo API) sont **en veille**, non fusionnées. Les recommandations anciennes dans ce fichier sont historiques, non les prochaines étapes.
+Ne pas pousser de code photo-only; ne pas déclarer test réel à partir d'une CI mock.
