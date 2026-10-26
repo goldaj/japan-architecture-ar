@@ -56,3 +56,13 @@ Après un essai sur photo réelle, l'utilisateur indique que le rendu en rectang
 - Aucun produit Snapchat ni vidéo live ne découle automatiquement de l'API photo. Le modèle d'image est destiné d'abord à évaluer l'objectif esthétique.
 
 Après toute reprise, lire d'abord les changements de la PR #5 et l'historique lié; ne pas supposer que `develop` contient déjà le code IA.
+
+## Nouvelle règle de coordination, prioritaire : LIVE-ONLY (2026-10-26)
+**Cette règle supprime comme priorités les anciennes consignes d'images et de vidéos préenregistrées; les textes antérieurs restent présents pour traçabilité.**
+- Nouveau scénario : **visioconférence en direct**, environnement entier Japon généré, rotation/marche, même scène réapparaissant cohérente, puis révélation brute instantanée. Fidélité des objets réels secondaire.
+- [PR active #8](https://github.com/goldaj/japan-architecture-ar/pull/8), branche `feat/live-webrtc-foundation`: client caméra WebRTC ↔ Scope et commutation immédiate du flux, pas encore testé contre GPU Scope réel.
+- Codex : lire `AGENTS.md` sur develop, puis **sur la PR #8** `docs/ADR_0002_LIVE_ONLY.md`, `docs/EXPERIMENTS.md`, `docs/RESEARCH_LIVE.md`, `docs/TASKS.md`, `docs/HANDOFF.md` et l'historique.
+- Scope open source bêta fonctionne avec >=24 Go VRAM annoncé. Ne pas promettre que la 3060 12Go suffira.
+- [PR #5 photo IA](https://github.com/goldaj/japan-architecture-ar/pull/5) et [PR #1 géométrie](https://github.com/goldaj/japan-architecture-ar/pull/1) **en veille**. Ne pas fusionner.
+- Expériences utiles seulement : GPU réel donnant vidéo japonaise en flux, mémoire de scène au retour 360°, reveal, OBS Virtual Camera et appel réel, puis caméra smartphone pendant marche.
+- Les travaux précédents de photo/vidéo offline ne sont pas des succès produit.
