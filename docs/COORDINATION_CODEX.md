@@ -31,3 +31,14 @@ Consulter `docs/HANDOFF.md` à la reprise et vérifier les PR et tests CI les pl
 - [#2 validation visuelle](https://github.com/goldaj/japan-architecture-ar/issues/2), [#3 Lens Studio](https://github.com/goldaj/japan-architecture-ar/issues/3), [#4 tracking et segmentation](https://github.com/goldaj/japan-architecture-ar/issues/4).
 - L'export transparent du calque facilite un P2 manuel, mais l'alignement reste limité à une photo.
 - [PR nettoyage incubateur #2](https://github.com/goldaj/projects-incubator/pull/2), **brouillon non fusionné**.
+
+## P1+ étendu par ChatGPT le 2026-10-26, avant tests manuels
+L'utilisateur a demandé explicitement : « tu peux déjà aller un peu plus loin dans le dev avant qu'on fasse des tests ? »
+
+- Travail restant sur la même [PR #1 brouillon](https://github.com/goldaj/japan-architecture-ar/pull/1), branche `feat/chatgpt-photo-mvp`, **sans fusion**.
+- Extension : `src/core/scene.mjs` (scènes immuables versionnées), jusqu'à 24 façades par photo, sélection et déplacement des coins, style/opacité par façade, PNG composite + alpha, projet JSON lié au SHA-256 calculé localement.
+- Nouveaux tests purs : `tests/scene.test.mjs`; CI verte du commit fonctionnel `0bf7bdd`, voir https://github.com/goldaj/japan-architecture-ar/actions/runs/40350461490.
+- Documentation à lire **sur la branche de PR**, pas encore sur develop : `docs/SCENE_FORMAT.md`, `docs/PRODUCT.md`, `docs/TASKS.md`, `docs/HANDOFF.md` et `docs/CHATGPT_PROJECT_HISTORY.md` mis à jour.
+- [Issue #2](https://github.com/goldaj/japan-architecture-ar/issues/2) étendue pour test sur photos, multi-façades, manipulation de points, export alpha, persistance/rejet JSON et vie privée.
+- Prochain jalon : test de navigateur et revue de qualité, **pas** passage prématuré à segmentation/AR en prétendant la fonction prête. Voir aussi #3 et #4.
+- Les fichiers JSON personnels peuvent révéler le nom/hash de photo; ne pas publier d'exemples personnels dans le repo.
