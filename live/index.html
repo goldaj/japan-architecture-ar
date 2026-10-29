@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Japan Live | caméra virtuelle expérimentale</title>
+<link rel="stylesheet" href="./style.css"><script type="module" src="./app.mjs"></script></head>
+<body><main>
+<header><h1>Japan Live <small>POC streaming WebRTC</small></h1>
+<p>Une caméra, un moteur vidéo IA externe <strong>Daydream Scope</strong>, un basculement Japon / Réalité. Ne prétend pas que l'IA fonctionne tant que Scope n'a pas fourni d'images.</p></header>
+<section class="bar">
+<button id="camera">1. Ouvrir la caméra</button>
+<button id="connect" disabled>2. Connecter Scope</button>
+<button id="disconnect" disabled>Arrêter l'IA</button>
+<button id="japan" disabled>Activer Japon (J)</button>
+<button id="reveal" disabled>Révéler la réalité (R ou Espace)</button>
+<button id="fullscreen">Plein écran pour OBS</button>
+</section>
+<label for="prompt">Décor cible persistant (envoyé à Scope à la connexion)</label>
+<textarea id="prompt" rows="3" maxlength="2000"></textarea>
+<p id="status" role="status" aria-live="polite">Caméra non démarrée.</p>
+<p id="stats" class="stats">Source affichée : aucune · Flux IA : indisponible</p>
+<section class="stagewrap"><canvas id="stage" width="640" height="360" aria-label="Flux vidéo sélectionné Japon ou Réalité"></canvas></section>
+<video id="input" autoplay muted playsinline hidden></video>
+<video id="generated" autoplay muted playsinline hidden></video>
+<footer>
+<p>Le mode <strong>Révéler</strong> affiche directement les images de la caméra, indépendamment de l'inférence. Si les frames IA cessent, un retour automatique au brut évite l'image figée; cela n'est pas une réussite IA.</p>
+<p>Caméra transmise par WebRTC à <strong>Scope déjà installé</strong>. Notre serveur local ne stocke pas les frames. N'utiliser qu'un Scope de confiance; aucune vidéo n'est transmise sans démarrage manuel. L'IA n'est pas embarquée dans ce dépôt. Pour une visio sur PC, OBS peut capturer la zone en plein écran puis exposer OBS Virtual Camera.</p>
+</footer></main></body></html>

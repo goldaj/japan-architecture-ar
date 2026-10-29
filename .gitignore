@@ -1,0 +1,16 @@
+# Generated content and secrets
+node_modules/
+.env
+.env.*
+!.env.example
+dist/
+coverage/
+.DS_Store
+Thumbs.db
+*.log
+# Lens Studio local output, not source
+.lensstudio/
+.cache/
+# user-imported photos and exported previews
+local-assets/
+outputs/
