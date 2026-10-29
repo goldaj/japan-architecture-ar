@@ -1,0 +1,16 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Japan AR Lab — caméra & suivi</title>
+<style>:root{font:16px/1.5 system-ui,sans-serif;color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#0e1830;color:#f2f6ff}main{max-width:1050px;margin:auto;padding:24px}
+h1{margin:0;font-size:clamp(2rem,4vw,3rem)}p{color:#bfd0eb}canvas{width:100%;height:auto;aspect-ratio:16/9;background:#14284b;border:2px solid #57769c;border-radius:14px}
+.panel{background:#172a47;padding:18px;border:1px solid #36597d;border-radius:14px;margin:16px 0}
+.controls{display:flex;flex-wrap:wrap;gap:9px;align-items:center}button{background:#2c507d;border:1px solid #729ed2;color:#fff;border-radius:10px;font:inherit;padding:9px 15px;cursor:pointer}
+button:disabled{opacity:.45}button:focus-visible{outline:3px solid #ffda8d}#message{color:#f5d8a7;min-height:1.4em}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.metric{padding:12px;background:#24395c;border-radius:11px}.metric strong{display:block;font-size:1.6rem;font-variant-numeric:tabular-nums}
+.note{font-size:.87rem;color:#bbccdc}video{display:none}@media(max-width:620px){.metrics{grid-template-columns:1fr 1fr}}
+</style><script defer src="./tracking.js"></script><script defer src="./app.js"></script></head>
+<body><main><h1>Japan AR Lab</h1><p>Premier banc d'essai : caméra en direct, surcouche architecturale 2D, suivi de mouvement local et retour immédiat au flux original. Ce n'est pas encore une transformation IA du décor.</p>
+<section class="panel"><div class="controls"><button id="start">Démarrer caméra</button><button id="stop" disabled>Arrêter caméra</button><button data-mode="raw">Décor réel</button><button data-mode="screen">Overlay fixe</button><button data-mode="tracked">Overlay suivi</button><button id="reset">Réinitialiser ancre</button></div>
+<p id="message" role="status" aria-live="polite">Autorise la caméra pour lancer l'expérience. Utilise localhost ou HTTPS.</p>
+<video id="camera" autoplay muted playsinline></video><canvas id="screen" width="960" height="540" aria-label="Flux caméra et surcouche d'architecture japonaise expérimentale"></canvas>
+<div class="metrics"><div class="metric">FPS observés<strong id="fps">—</strong></div><div class="metric">Temps JS p95 (ms)<strong id="render-ms">—</strong></div><div class="metric">Suivi accepté<strong id="track-rate">—</strong></div></div>
+<div class="controls" style="margin-top:15px"><button id="report">Exporter mesures JSON</button><span>Mode : <strong id="mode">raw</strong></span></div>
+<p class="note">Aucune image n'est envoyée ou sauvegardée. Le suivi par corrélation de blocs est fragile aux changements de lumière, rotations et occultations. FPS et temps JS ne mesurent pas la latence totale du pipeline caméra.</p></section></main></body></html>

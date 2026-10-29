@@ -12,3 +12,9 @@
 
 ## Historique ultérieur
 Ajouter les nouvelles demandes et décisions avec leur rôle, une date sourcée quand elle est connue et le niveau de fidélité de chaque citation ; ne jamais fabriquer de messages manquants.
+
+## Intervention 2026-10-29
+
+Utilisateur (verbatim, heure non garantie) : « Je ne te demande pas de créer une tâche planifiée qui continue chaque jour. Je te demande de continuer maintenant en boucle et de ne pas t'arrêter sur juste 3 améliorations alors qu'il y a plus de 40 repo et plusieurs améliorations possibles par repo ».
+
+Assistant (résumé non verbatim) : développement d'une première baseline vidéo interactive dans un navigateur (caméra locale, overlay 2D, suivi par corrélation, bascule vers image réelle, mesures FPS et traitement JS, rapport JSON). Il s'agit de recherche exploratoire et non d'un modèle IA générant une rue japonaise. Voir `docs/CAMERA_BASELINE.md` pour les limites, tests et travaux suivants.

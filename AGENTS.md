@@ -16,3 +16,7 @@ Ce dépôt est autonome et ne doit plus être représenté comme une idée non d
 
 ## Continuité Codex / ChatGPT
 Les conversations anciennes ne sont pas accessibles intégralement dans ce dépôt. `docs/CHATGPT_PROJECT_HISTORY.md` conserve seulement les décisions vérifiées et avertit des lacunes. Ne pas prétendre être en possession d'une transcription intégrale.
+
+## Premier prototype exécutable (2026-10-29)
+
+`web/tracking.js` contient le suivi de mouvement local sans dépendance ; `web/app.js` manipule la caméra (autorisation nécessaire) et affiche une surcouche d'étude. Lire `docs/CAMERA_BASELINE.md`. Tester `node --test tests/*.test.cjs` et sur un téléphone en contexte sécurisé. Ne jamais présenter le prototype comme un filtre IA photoréaliste, une segmentation de personnes ou du SLAM. Aucune vidéo enregistrée ni transmise.
