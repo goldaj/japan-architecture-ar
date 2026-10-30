@@ -27,3 +27,9 @@ Vérification de 6 branches et 4 PR. Pas d'essai caméra/mobile, de service WebR
 5. Conserver `develop` tant que son rôle de coordination ou la documentation Git le demandent ; le fait d'être behind de `main` ne suffit pas à supprimer une branche structurante.
 
 Aucune intégration ou sortie en production lors de cette passe. Tout réemploi d'un ancien POC doit être une décision de produit motivée et testée.
+
+
+## Observation CI GitHub (30 octobre 2026)
+- [Japan AR baseline tests](https://github.com/goldaj/japan-architecture-ar/actions/runs/41046948816) : **success** sur commit documentaire.
+
+Les contrôles ci-dessus ne démontrent ni la validité fonctionnelle en environnement réel ni la publication d'une release. Ne pas substituer ce statut aux tests manuels et matériels prévus dans la passation.
